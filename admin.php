@@ -42,8 +42,23 @@ if (!isset($_SESSION['admin_logged_in'])) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Admin Login</title>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
+
+    <header>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="product.html">Products</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Admin</a></li>
+        </ul>
+    </nav>
+    <h1>Admin Dashboard</h1>
+</header>
+<main>
+    <div class="login-panel">
         <h2>Admin Login</h2>
         <?php if (isset($error_message)) echo '<p>' . $error_message . '</p>'; ?>
         <form action="admin.php" method="post">
@@ -55,6 +70,8 @@ if (!isset($_SESSION['admin_logged_in'])) {
             
             <button type="submit">Login</button>
         </form>
+    </div>
+</main>
     </body>
     </html>
     <?php
