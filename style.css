@@ -7,8 +7,8 @@ body {
     background-size: cover; 
     background-repeat: no-repeat;
     width: 100%;
-    padding:0;
-    margin-top: 80px;
+    padding:100px;
+    margin-top: 70px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     overflow-x:hidden ;
 }
@@ -17,7 +17,7 @@ header {
     position: fixed;
     text-align: center;
     width: 100%;
-    font-size: 40px;
+    font-size: 30px;
     background-color: tan;
     color: #000000;
     padding: 20px;
@@ -40,22 +40,25 @@ header {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 1rem;
-    padding: 60px;
+    padding: 50px;
+    z-index: 0  ;
+    margin-top: 100px;
 }
 
 .row {
+    display: flex;
     position: relative;
     transition: all .40s;
-    padding: 20px;
-    margin: 5px;
+    padding: 10px;
+    margin: 10px;
 }
 
 .row img {
     width: 80%;
-    height: auto;
+    height: 50%;
+    margin-left:30px;
     transition: all .40s;
     object-fit: contain;
-    border-radius: 10px;
 }
 
 .row img:hover {
@@ -78,6 +81,19 @@ header {
     font-size: 14px;
     font-weight: 600;
 }
+.quantity-input{
+    display: flex;
+    width: 50px;
+    background-color:pink;
+    
+}
+
+label{  
+   text-align: left;
+   font-size: 30px;
+   
+}
+
 
 /* admin.php css design */
 body {
