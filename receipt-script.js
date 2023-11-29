@@ -8,3 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
         receiptDiv.innerHTML = `<div>${receiptText}</div>`;
     } 
 });
+
+        document.getElementById("okayButton").addEventListener("click", function() {
+            // Redirect to product.html
+            window.location.href = "product.html";
+        });
