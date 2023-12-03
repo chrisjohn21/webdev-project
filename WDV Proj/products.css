@@ -1,0 +1,143 @@
+/* product.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e0f7e0; /* Lighter shade of green for the background */
+}
+
+header.product {
+    background-color: #f3e98f; /* Yellow header strip */
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    position: fixed; /* Stick the header to the top of the webpage */
+    width: 100%;
+    top: 0; /* Align to the top */
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Align the navigation items horizontally */
+    justify-content: center; /* Center the navigation items */
+}
+
+nav li {
+    margin-right: 10px;
+}
+
+nav a {
+    color: black; /* Black font color */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.product-list-container {
+    max-width: 800px;
+    margin: 80px auto 20px;
+    padding: 20px;
+    background-color: #eee;
+    border: 1px solid #ddd;
+}
+
+.product-list-heading {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.product-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.product-item img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+/* Add the following style for the h1 in the header */
+header.product h1 {
+    margin: 20px;
+    font-weight: bold;
+    color: black;
+}
+/* product.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e0f7e0; /* Lighter shade of green for the background */
+}
+
+header.product {
+    background-color: #f3e98f; /* Yellow header strip */
+    color: #fff;
+    padding: 5px;
+    text-align: center;
+    position: fixed; /* Stick the header to the top of the webpage */
+    width: 100%;
+    top: 0; /* Align to the top */
+    z-index: 1000;
+}
+
+nav {
+    margin-top: 10px; /* Adjusted margin-top for the navigation bar */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Align the navigation items horizontally */
+    justify-content: center; /* Center the navigation items */
+}
+
+nav li {
+    margin-right: 10px;
+}
+
+nav a {
+    color: black; /* Black font color */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+header.product h1 {
+    margin: 20px 0; /* Adjusted margin to add space between h1 and nav bar */
+    font-weight: bold;
+    color: black;
+}
+
+.product-list-container {
+    max-width: 800px;
+    margin: 130px auto 20px; /* Adjusted margin-top to move product list below header */
+    padding: 20px;
+    background-color: #eee;
+    border: 1px solid #ddd;
+}
+
+.product-list-heading {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.product-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.product-item img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+}

@@ -1,0 +1,112 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0; /* Remove margin */
+    padding: 0; /* Remove padding */
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+a:hover {
+    color: #ffcc00;
+}
+
+h2 {
+    color: #fff;
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #fff; /* Change text color to white */
+    font-weight: bold; /* Make text bold */
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #555;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+    margin-left: 10px;
+}
+
+p {
+    color: #d9534f;
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #5bc0de;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+button[name="logout"] {
+    background-color: #eb7975;
+    border: 2px solid #fff;
+    color: #0c0c0c;
+    font-weight: bold;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+button[name="logout"]:hover {
+    background-color: #fff;
+    color: #333;
+    border-color: #fff;
+}
