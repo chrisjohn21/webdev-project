@@ -141,3 +141,20 @@ header.product h1 {
     height: auto;
     margin-top: 10px;
 }
+.product-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center vertically */
+}
+
+.product-item img {
+    max-width: 200px; /* Set the max width of the image */
+    height: auto;
+    margin-right: 20px; /* Add margin to separate image and text */
+}
+
+.product-info {
+    flex: 1; /* Take remaining space */
+}
