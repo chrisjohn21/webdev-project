@@ -47,7 +47,7 @@ include_once "./connection.php";
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="user.php?action=logout">
                                 Users
                             </a>
                         </li>
