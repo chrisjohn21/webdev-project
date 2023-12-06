@@ -1,5 +1,3 @@
-// quantityUpdate.js
-
 function updateQuantity(productId, action) {
     Swal.fire({
         title: 'Update Quantity',
@@ -18,16 +16,26 @@ function updateQuantity(productId, action) {
         if (result.isConfirmed) {
             // Send the data to your server to update the quantity
             const xhr = new XMLHttpRequest();
-            xhr.open('POST', './updateQuantity.php', true); // Specify the correct PHP file URL
+            xhr.open('POST', './updateQuantity.php', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.onload = function () {
                 if (xhr.status === 200) {
                     const updatedQuantity = parseInt(result.value);
                     const currentQuantityElement = document.getElementById(`quantity-${productId}`);
                     const currentQuantity = parseInt(currentQuantityElement.textContent);
-                    const newQuantity = action === 'in' ? currentQuantity + updatedQuantity : currentQuantity - updatedQuantity;
+                    const newQuantity = action === 'in' ? currentQuantity + updatedQuantity : Math.max(0, currentQuantity - updatedQuantity);
+
+                    // Update the quantity in the UI
                     currentQuantityElement.textContent = newQuantity;
-                    Swal.fire('Quantity Updated!', '', 'success');
+
+                    // Check if the action is 'out', the new quantity is zero, and the current quantity was not zero
+                    if (action === 'out' && newQuantity === 0 && currentQuantity !== 0) {
+                        // Notify that the product is sold out
+                        Swal.fire('Product Sold Out!', '', 'warning');
+                    } else {
+                        // Notify quantity update success
+                        Swal.fire('Quantity Updated!', '', 'success');
+                    }
                 } else {
                     Swal.fire('Error!', 'Quantity could not be updated.', 'error');
                 }

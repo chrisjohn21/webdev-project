@@ -62,6 +62,26 @@ class Product
 
         return $productList;
     }
-    
+    public static function getProductById($productId)
+    {
+        $database = new Database(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+        $conn = $database->getConnection();
+
+        $query = "SELECT * FROM products WHERE id = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $productId);
+        $stmt->execute();
+        
+        $result = $stmt->get_result();
+
+        if ($result && $result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $product = new Product($row['name'], $row['price'], $row['description'], $row['quantity']);
+            $product->id = $row['id'];
+            return $product;
+        }
+
+        return null; // Return null if the product is not found
+    }
 }
 ?>

@@ -48,10 +48,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $insertTransactionStmt->execute();
         $insertTransactionStmt->close();
 
-        echo 'success';
+        // Check if the product is sold out
+        $soldOut = ($newQuantity === 0);
+
+        // Return the response as JSON
+        echo json_encode(['status' => 'success', 'soldOut' => $soldOut]);
     } else {
         header("HTTP/1.1 500 Internal Server Error");
-        echo 'Error updating quantity.';
+        echo json_encode(['status' => 'error', 'message' => 'Error updating quantity.']);
     }
 
     $updateStmt->close();
