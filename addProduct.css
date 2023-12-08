@@ -1,0 +1,101 @@
+/*navbar */
+    body {
+            padding-top: 56px; 
+        }
+        
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 200px;
+            padding-top: 1rem;
+            background-color: #61a4d6;
+        }
+
+        .sidebar a {
+            padding: 8px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #343a40;
+            display: block;
+        }
+
+        .sidebar a:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .main-content {
+            margin-left: 200px;
+            padding: 20px;
+        }
+
+        @media (max-width: 767px) {
+            .sidebar {
+                width: 100%;
+                position: static;
+                height: auto;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+        }
+
+      /* table*/ 
+      /* Example styles for SimpleBar scrollbar */
+.simplebar-scrollbar::before {
+    background-color: transparent; /* Change this to your preferred background color */
+}
+
+.simplebar-scrollbar.simplebar-visible::before {
+    opacity: 0.8; /* Change this to adjust scrollbar visibility */
+}
+
+.simplebar-track {
+    width: 8px; /* Change this to adjust the width of the scrollbar track */
+}
+ 
+    /* addbutton*/
+    .swal2-popup {
+        width: 400px;
+        font-size: 15px;
+    }
+
+    .swal2-title {
+        color: #4a90e2;
+    }
+
+    .swal2-content {
+        color: #555;
+    }
+
+    .swal2-input {
+        margin: 10px 0;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .swal2-confirm,
+    .swal2-cancel {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    .swal2-confirm {
+        background-color: #4caf50;
+        color: #fff;
+    }
+
+    .swal2-cancel {
+        background-color: #d33;
+        color: #fff;
+    }
+
+    .swal2-confirm:hover,
+    .swal2-cancel:hover {
+        opacity: 0.8;
+    }
+    
