@@ -83,26 +83,23 @@ class Product
 
         return null; // Return null if the product is not found
     }
-    public static function deleteProduct($productName) {
-        include_once "./connection.php";
+    public function delete()
+    {
+        $database = new Database(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+        $conn = $database->getConnection();
 
-        $tableName = 'products';
+        $query = "DELETE FROM products WHERE id = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $this->id);
 
-        try {
-            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-            $stmt = $conn->prepare("DELETE FROM $tableName WHERE name = :name");
-            $stmt->bindParam(':name', $productName, PDO::PARAM_STR);
-            $stmt->execute();
-
+        if ($stmt->execute()) {
+            // Deletion successful
             return true;
-        } catch (PDOException $e) {
-            // Log or handle the exception appropriately
+        } else {
+            // Deletion failed
             return false;
-        } finally {
-            $conn = null; // Close the connection
         }
     }
+
 }
 ?>

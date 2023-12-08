@@ -9,7 +9,7 @@ include_once "./user.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Bakery Inventory System</title>
+    <title>Crazy Whisk Inventory System</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -23,43 +23,53 @@ include_once "./user.php";
     <script src="./addUser.js"></script>
     <link rel="stylesheet" href="./addProduct.css">
     <style>
-        
+        body {
+            background: linear-gradient( #6DB9EF, #00BFFF); 
+        }
+            /* Style for custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #87C4FF;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
     </style>
 </head>
 <body>
 <body style="padding-top: 56px;">
-<div class="container-fluid">
+<div class="container-fluid" >
         <div class="row">
-            <nav class="col-md-2 col-sm-12 bg-light sidebar">
-                <div class="sidebar-sticky">
+            <nav class="col-md-2 col-sm-12  sidebar" style="background-color:#96EFFF;">
+                <div class="sidebar-sticky" >
                     <!-- Move the upper navbar content here -->
-                    <h5 class="navbar-brand">Bakery Inventory</h5>
+                    <h5 class="navbar-brand" style="color: #3498db; font-size: 32px; font-weight: bold;">Crazy Whisk<br> Inventory</h5>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Home</a>
-                            </li>
-                          
-                        </ul>
-                    </div>
-                 
-
-                    <ul class="nav flex-column">
+                    <ul class="nav flex-column"  >
                         <li class="nav-item">
                             <a class="nav-link" href="#product-table">Products</a>
                             </li>
                             <li class="nav-item">
                             <a class="nav-link" href="#transactions">Transactions</a>
                             </li>
-                        </li>
-                        <li class="nav-item">
+                            </li>
+                            <li class="nav-item">
                             <a class="nav-link" href="#UsersList">Users</a>
                             </li>
-                        <li class="nav-item">
+                            <li class="nav-item">
                             <a class="nav-link" href="userLogin.php?action=logout">
                                 Log Out
                             </a>
@@ -69,11 +79,11 @@ include_once "./user.php";
             </nav>
 
             <main role="main" class="col-md-9 col-sm-12 ml-sm-auto col-lg-10 px-md-4 main-content">
-                <h2 id="product-table">Product List</h2>
+                <h2 id="product-table" class="bg-primary text-white p-3">Product List</h2><br>
                 <button id="addProductButton" class="btn btn-primary mb-3">Add Product</button>
                 <div class="table-responsive" style="max-height: 450px; min-height: 430px; overflow-y: auto;">
-                         <table class="table table-striped table-bordered">
-                        <thead class="thead-light">
+                         <table class="table table-striped table-bordered" style="font-size: 16px;">
+                        <thead class="thead-secondary bg-info">
                             <tr>
                                 <th>Name</th>
                                 <th>Price</th>
@@ -90,7 +100,7 @@ include_once "./user.php";
                                     foreach ($productList as $product) {
                                         echo '<tr>';
                                         echo '<td>' . $product->getName() . '</td>';
-                                        echo '<td>' . $product->getPrice() . '</td>';
+                                        echo '<td>₱ ' . $product->getPrice() . '</td>';
                                         echo '<td>' . $product->getDescription() . '</td>';
                                         echo '<td id="quantity-' . $product->getId() . '">' . $product->getQuantity() . '</td>';
                                         echo '<td>
@@ -110,11 +120,11 @@ include_once "./user.php";
 
                 <!-- Transactions Report Table -->
                 <div class="container-fluid mt-4">
-                    <br><br><h2 id="transactions">Transactions Report</h2><br>
+                    <br><br><h2 id="transactions" class="bg-primary text-white p-3">Transactions Report</h2><br>
                     <!-- Wrap the table in a div with the table-responsive class -->
                     <div class="table-responsive" style="max-height: 400px; min-height: 460px; overflow-y: auto;">
                             <table class="table table-striped table-bordered">
-                            <thead class="thead-light">
+                            <thead class="thead-secondary bg-info">
                                 <tr>
                                     <th>Product Name</th>
                                     <th>Action</th>
@@ -146,12 +156,11 @@ include_once "./user.php";
                     </div>
                 </div>
                 <div class="container-fluid mt-4">
-        <br><br><h2 id="UsersList">Users List</h2><br>
+        <br><br><h2 id="UsersList" class="bg-primary text-white p-3">Users List</h2><br>
         <button id="addUserButton" class="btn btn-primary mb-3" onclick="addUser()">Add User</button>
-        <!-- Wrap the table in a div with the table-responsive class -->
         <div class="table-responsive" style="max-height: 400px; min-height: 430px; overflow-y: auto;">
             <table class="table table-striped table-bordered">
-                <thead class="thead-light">
+                <thead class="thead-secondary bg-info">
                     <tr>
                         <th>User ID</th>
                         <th>Username</th>

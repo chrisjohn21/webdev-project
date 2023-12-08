@@ -2,7 +2,7 @@
     body {
             padding-top: 56px; 
         }
-
+        
         .sidebar {
             position: fixed;
             top: 0;
@@ -10,7 +10,7 @@
             height: 100%;
             width: 200px;
             padding-top: 1rem;
-            background-color: #f3f7fa;
+            background-color: #61a4d6;
         }
 
         .sidebar a {
@@ -42,6 +42,21 @@
                 margin-left: 0;
             }
         }
+
+      /* table*/ 
+      /* Example styles for SimpleBar scrollbar */
+.simplebar-scrollbar::before {
+    background-color: transparent; /* Change this to your preferred background color */
+}
+
+.simplebar-scrollbar.simplebar-visible::before {
+    opacity: 0.8; /* Change this to adjust scrollbar visibility */
+}
+
+.simplebar-track {
+    width: 8px; /* Change this to adjust the width of the scrollbar track */
+}
+ 
     /* addbutton*/
     .swal2-popup {
         width: 400px;
@@ -83,3 +98,4 @@
     .swal2-cancel:hover {
         opacity: 0.8;
     }
+    
