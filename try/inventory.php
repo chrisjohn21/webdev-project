@@ -10,6 +10,7 @@ include_once "./user.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Crazy Whisk Inventory System</title>
+    <link rel="icon" href="/images/bakery_icon.jpg" type="image/x-icon">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -63,14 +64,14 @@ include_once "./user.php";
                             <a class="nav-link" href="#product-table">Products</a>
                             </li>
                             <li class="nav-item">
-                            <a class="nav-link" href="#transactions">Transactions</a>
+                            <a class="nav-link" href="transact.php">Transactions</a>
                             </li>
                             </li>
                             <li class="nav-item">
                             <a class="nav-link" href="#UsersList">Users</a>
                             </li>
                             <li class="nav-item">
-                            <a class="nav-link" href="userLogin.php?action=logout">
+                            <a class="nav-link" href="userLogin.php">
                                 Log Out
                             </a>
                         </li>
@@ -118,43 +119,6 @@ include_once "./user.php";
                     </table>
                 </div>
 
-                <!-- Transactions Report Table -->
-                <div class="container-fluid mt-4">
-                    <br><br><h2 id="transactions" class="bg-primary text-white p-3">Transactions Report</h2><br>
-                    <!-- Wrap the table in a div with the table-responsive class -->
-                    <div class="table-responsive" style="max-height: 400px; min-height: 460px; overflow-y: auto;">
-                            <table class="table table-striped table-bordered">
-                            <thead class="thead-secondary bg-info">
-                                <tr>
-                                    <th>Product Name</th>
-                                    <th>Action</th>
-                                    <th>Quantity</th>
-                                    <th>Timestamp</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                    // Fetch and display transactions from the database
-                                    $query = "SELECT * FROM transactions ORDER BY created_at DESC";
-                                    $result = $conn->query($query);
-
-                                    if ($result && $result->num_rows > 0) {
-                                        while ($row = $result->fetch_assoc()) {
-                                            echo '<tr>';
-                                            echo '<td>' . $row['product_name'] . '</td>';
-                                            echo '<td>' . $row['action'] . '</td>';
-                                            echo '<td>' . $row['quantity'] . '</td>';
-                                            echo '<td>' . $row['created_at'] . '</td>';
-                                            echo '</tr>';
-                                        }
-                                    } else {
-                                        echo '<tr><td colspan="5">No transactions found</td></tr>';
-                                    }
-                                ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
                 <div class="container-fluid mt-4">
         <br><br><h2 id="UsersList" class="bg-primary text-white p-3">Users List</h2><br>
         <button id="addUserButton" class="btn btn-primary mb-3" onclick="addUser()">Add User</button>

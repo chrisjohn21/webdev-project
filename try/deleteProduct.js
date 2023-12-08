@@ -1,4 +1,4 @@
-function confirmDelete(productName) {
+function confirmDelete(productId, productName) {
     Swal.fire({
         title: 'Are you sure?',
         text: 'You are about to delete ' + productName + '. This action cannot be undone.',
@@ -15,11 +15,11 @@ function confirmDelete(productName) {
     });
 }
 
-function deleteProduct(productName) {
+function deleteProduct(productId, productName) {
     $.ajax({
         type: 'POST',
         url: 'deleteProduct.php',
-        data: { product_name: productName },
+        data: { product_id: productId },
         dataType: 'json',
         success: function (response) {
             if (response.success) {
