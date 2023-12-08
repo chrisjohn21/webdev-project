@@ -25,9 +25,10 @@ include_once "./user.php";
     <link rel="stylesheet" href="./addProduct.css">
     <style>
         body {
-            background: linear-gradient( #6DB9EF, #00BFFF);
-            padding-left: 250px; 
+            background: linear-gradient( #FFBB5C, #E25E3E);
+            padding-left: 220px; 
         }
+
             /* Style for custom scrollbar */
         ::-webkit-scrollbar {
             width: 12px;
@@ -35,12 +36,12 @@ include_once "./user.php";
 
         /* Track */
         ::-webkit-scrollbar-track {
-            background: #f1f1f1;
+            background: #FFBB5C;
         }
 
         /* Handle */
         ::-webkit-scrollbar-thumb {
-            background: #87C4FF;
+            background: #C63D2F;
         }
 
         /* Handle on hover */
@@ -50,30 +51,29 @@ include_once "./user.php";
     </style>
 </head>
 <body>
-<body style="padding-top: 0px;">
+<body>
 <div class="container-fluid" >
         <div class="row">
-            <nav class="col-md-2 col-sm-12  sidebar" style="background-color:#96EFFF;">
+            <nav class="col-md-2 col-sm-12  sidebar" style="background-color:#FFC47E; ">
                 <div class="sidebar-sticky" >
                     <!-- Move the upper navbar content here -->
-                    <h5 class="navbar-brand" style="color: #3498db; font-size: 32px; font-weight: bold;">Crazy Whisk<br> Inventory</h5>
+                    <h5 class="navbar-brand" style="font-size: 32px; font-weight: bold; color: #6B240C ;text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8)">Crazy Whisk<br> Inventory</h5>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <ul class="nav flex-column"  >
-                        <li class="nav-item">
-                            <a class="nav-link" href="inventory.php">Products</a>
+                        <li class="nav-item" >
+                            <a class="nav-link" href="inventory.php" style="color:#6B240C; font-weight:bold;">Products</a>
                             </li>
                             <li class="nav-item">
-                            <a class="nav-link" href="transact.php">Transactions</a>
+                            <a class="nav-link" href="transact.php" style="color:#6B240C; font-weight:bold;">Transactions</a>
                             </li>
                             </li>
                             <li class="nav-item">
-                            <a class="nav-link" href="#UsersList">Users</a>
+                            <a class="nav-link" href="inventory.php#UsersList" style="color:#6B240C; font-weight:bold;">Users</a>
                             </li>
                             <li class="nav-item">
-                            <a class="nav-link" href="userLogin.php?action=logout">
-                                Log Out
+                            <a class="nav-link" href="userLogin.php?action=logout" style="color:#6B240C; font-weight:bold;">Log Out
                             </a>
                         </li>
                     </ul>
@@ -82,11 +82,11 @@ include_once "./user.php";
 
                 <!-- Transactions Report Table -->
                 <div class="container-fluid mt-4">
-                    <br><br><h2 id="transactions" class="bg-primary text-white p-3">Transactions Report</h2><br>
+                    <h2 id="transactions" class="custom-bg-gradient p-3">Transactions Report</h2><br>
                     <!-- Wrap the table in a div with the table-responsive class -->
-                    <div class="table-responsive" style="max-height: 400px; min-height: 490px; overflow-y: auto;">
+                    <div class="table-responsive" style="max-height: 400px; min-height: 450px; overflow-y: auto;">
                             <table class="table table-striped table-bordered">
-                            <thead class="thead-secondary bg-info">
+                            <thead class="custom-bg-gradient p-3">
                                 <tr>
                                     <th>Product Name</th>
                                     <th>Action</th>
@@ -117,3 +117,11 @@ include_once "./user.php";
                         </table>
                     </div>
                 </div>
+                <style>
+                  /* Add your gradient styles here */
+                     .custom-bg-gradient {
+                         background: linear-gradient(to right, #C63D2F, #FF9B50);
+                        color: white; /* Set the text color to white or another suitable color */
+                         padding: 1rem; /* Adjust the padding as needed */
+                         }
+                             </style>

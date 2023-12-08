@@ -25,8 +25,9 @@ include_once "./user.php";
     <link rel="stylesheet" href="./addProduct.css">
     <style>
         body {
-            background: linear-gradient( #6DB9EF, #00BFFF); 
+            background: linear-gradient(  #FFBB5C, #E25E3E); 
         }
+        
             /* Style for custom scrollbar */
         ::-webkit-scrollbar {
             width: 12px;
@@ -34,66 +35,70 @@ include_once "./user.php";
 
         /* Track */
         ::-webkit-scrollbar-track {
-            background: #f1f1f1;
+            background: #FFBB5C;
         }
 
         /* Handle */
         ::-webkit-scrollbar-thumb {
-            background: #87C4FF;
+            background: #C63D2F;
         }
 
         /* Handle on hover */
         ::-webkit-scrollbar-thumb:hover {
             background: #555;
         }
+
+        .custom-bg-gradient {
+                         background: linear-gradient(to right, #C63D2F, #FF9B50);
+                        color: white; 
+                         padding: 1rem; 
+                         }
     </style>
 </head>
 <body>
 <body style="padding-top: 56px;">
 <div class="container-fluid" >
         <div class="row">
-            <nav class="col-md-2 col-sm-12  sidebar" style="background-color:#96EFFF;">
+            <nav class="col-md-2 col-sm-12  sidebar" style="background-color:#FFC47E ; color: #3498db">
                 <div class="sidebar-sticky" >
                     <!-- Move the upper navbar content here -->
-                    <h5 class="navbar-brand" style="color: #3498db; font-size: 32px; font-weight: bold;">Crazy Whisk<br> Inventory</h5>
+                    <h5 class="navbar-brand" style="color: #6B240C; font-size: 32px; font-weight: bold; text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8)">Crazy Whisk<br> Inventory</h5>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <ul class="nav flex-column"  >
                         <li class="nav-item">
-                            <a class="nav-link" href="#product-table">Products</a>
+                            <a class="nav-link" href="#product-table" style="color: #6B240C; font-weight:bold;">Products</a>
                             </li>
                             <li class="nav-item">
-                            <a class="nav-link" href="transact.php">Transactions</a>
+                            <a class="nav-link" href="transact.php" style="color: #6B240C; font-weight:bold;">Transactions</a>
                             </li>
                             </li>
                             <li class="nav-item">
-                            <a class="nav-link" href="#UsersList">Users</a>
+                            <a class="nav-link" href="#UsersList" style="color: #6B240C; font-weight:bold;">Users</a>
                             </li>
                             <li class="nav-item">
-                            <a class="nav-link" href="userLogin.php">
-                                Log Out
-                            </a>
+                            <a class="nav-link" href="userLogin.php" style="color: #6B240C; font-weight:bold;">Log Out</a>
                         </li>
                     </ul>
                 </div>
             </nav>
 
-            <main role="main" class="col-md-9 col-sm-12 ml-sm-auto col-lg-10 px-md-4 main-content">
-                <h2 id="product-table" class="bg-primary text-white p-3">Product List</h2><br>
-                <button id="addProductButton" class="btn btn-primary mb-3">Add Product</button>
-                <div class="table-responsive" style="max-height: 450px; min-height: 430px; overflow-y: auto;">
-                         <table class="table table-striped table-bordered" style="font-size: 16px;">
-                        <thead class="thead-secondary bg-info">
-                            <tr>
+            <main role="main" class="col-md-4 col-sm-12 ml-sm-auto col-lg-10 px-md-2 main-content">
+                <h2 id="product-table" class="custom-bg-gradient p-3" >Product List</h2><br>
+                                <button id="addProductButton" class="btn custom-bg-gradient mb-3" style="font-weight: bold; font-size:20px;">Add Product</button>
+                                <div class="table-responsive" style="max-height: 450px; min-height: 430px; overflow-y: auto;">
+                                <table class="table table-striped table-bordered" style="font-size: 16px;">
+                                <thead class="custom-bg-gradient p-3">
+                                 <tr >
                                 <th>Name</th>
                                 <th>Price</th>
                                 <th>Description</th>
                                 <th>Quantity</th>
                                 <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                                 </tr>
+                                 </thead>
+                                <tbody>
                             <?php
                                 // Fetch and display product information from the database
                                 $productList = Product::getAllProducts();
@@ -120,11 +125,11 @@ include_once "./user.php";
                 </div>
 
                 <div class="container-fluid mt-4">
-        <br><br><h2 id="UsersList" class="bg-primary text-white p-3">Users List</h2><br>
-        <button id="addUserButton" class="btn btn-primary mb-3" onclick="addUser()">Add User</button>
+        <br><h2 id="UsersList" class="custom-bg-gradient p-2">Users List</h2><br>
+        <button id="addUserButton" class="btn custom-bg-gradient mb-3" style="font-weight: bold; font-size:20px;" onclick="addUser()">Add User</button>
         <div class="table-responsive" style="max-height: 400px; min-height: 430px; overflow-y: auto;">
             <table class="table table-striped table-bordered">
-                <thead class="thead-secondary bg-info">
+                <thead class="custom-bg-gradient p-3">
                     <tr>
                         <th>User ID</th>
                         <th>Username</th>
