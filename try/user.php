@@ -1,76 +1,77 @@
 <?php
-session_start();
+include_once "./connection.php";
+// Assume you have a User class with relevant methods
+class User
+{
+    private $id;
+    private $username;
+    private $password;
 
-// Database connection
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "bakery_inventory";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Login processing
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-
-    $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows == 1) {
-        // Login successful
-        $_SESSION['username'] = $username;
-        header("Location: inventory.php"); // Redirect directly to inventory.php
-        exit;
-    } else {
-        // Login failed
-        $_SESSION['login_error'] = "Invalid username or password";
-        header("Location: user.php?action=login");
-        exit;
-    }
-}
-
-// Logout processing
-if (isset($_GET["action"]) && $_GET["action"] == "logout") {
-    session_destroy();
-    header("Location: user.php?action=login");
-    exit;
-}
-
-// Display content based on user's login status
-if (isset($_SESSION['username'])) {
-    // User is logged in, redirect to inventory.php
-    header("Location: inventory.php");
-    exit;
-} else {
-    // User is not logged in, show the login form
-    echo "<!DOCTYPE html>
-        <html lang='en'>
-        <head>
-            <meta charset='UTF-8'>
-            <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-            <title>User Login</title>
-        </head>
-        <body>
-            <h2>Login</h2>";
-
-    if (isset($_SESSION['login_error'])) {
-        echo "<p style='color: red;'>{$_SESSION['login_error']}</p>";
-        unset($_SESSION['login_error']);
+    public function __construct($id, $username, $password)
+    {
+        $this->id = $id;
+        $this->username = $username;
+        $this->password = $password;
     }
 
-    echo "<form method='post' action='user.php?action=login'>
-            <label for='username'>Username:</label>
-            <input type='text' name='username' required><br>
-            <label for='password'>Password:</label>
-            <input type='password' name='password' required><br>
-            <input type='submit' name='login' value='Login'>
-        </form>
-        </body>
-        </html>";
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    public function getPassword()
+    {
+        return $this->password;
+    }
+}
+ function addUser($username, $hashedPassword)
+    {
+        // Assume you have a database connection in the connection.php file
+        include_once "./connection.php";
+
+        // You should add proper validation and sanitation here
+
+        $query = "INSERT INTO users (username, password) VALUES ('$username', '$hashedPassword')";
+
+        // Execute the query
+        $result = $conn->query($query);
+
+        // Check if the query was successful
+        if ($result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+// Function to retrieve user data from the database
+function getAllUsers()
+{
+    // Replace this with your database connection logic
+    $conn = new mysqli("localhost", "root", "", "bakery_inventory");
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $users = array();
+
+    $query = "SELECT * FROM users"; // Replace 'users' with your actual user table name
+    $result = $conn->query($query);
+
+    if ($result && $result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $user = new User($row['id'], $row['username'], $row['password']);
+            $users[] = $user;
+        }
+    }
+
+    $conn->close();
+
+    return $users;
 }
 ?>

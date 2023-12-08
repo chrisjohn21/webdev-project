@@ -83,5 +83,26 @@ class Product
 
         return null; // Return null if the product is not found
     }
+    public static function deleteProduct($productName) {
+        include_once "./connection.php";
+
+        $tableName = 'products';
+
+        try {
+            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $stmt = $conn->prepare("DELETE FROM $tableName WHERE name = :name");
+            $stmt->bindParam(':name', $productName, PDO::PARAM_STR);
+            $stmt->execute();
+
+            return true;
+        } catch (PDOException $e) {
+            // Log or handle the exception appropriately
+            return false;
+        } finally {
+            $conn = null; // Close the connection
+        }
+    }
 }
 ?>
