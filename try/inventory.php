@@ -1,4 +1,6 @@
 <?php
+session_start(); // Ensure session is started
+
 include_once "./connection.php";
 include_once "./Product.php";
 include_once "./user.php";
@@ -57,12 +59,33 @@ include_once "./user.php";
 </head>
 <body>
 <body style="padding-top: 56px;">
-<div class="container-fluid" >
+<div class="container-fluid" style="margin-top: -30px;">
+    <!-- Welcome Message -->
+    <div class="row">
+        <div class="col text-right" style="font-size: 25px; font-weight: bold;">
+            <?php
+            // Check if the session variable is set
+            if (isset($_SESSION['username'])) {
+                $loggedInUser = $_SESSION['username'];
+                $loggedInUser = ucfirst($_SESSION['username']); // Capitalize the first letter
+                echo "<img src='/images/user_icon.png' alt='User Icon' style='max-height: 50px; margin-bottom: -5px;'> Welcome, $loggedInUser!";
+            }
+            ?>
+        </div>
+    </div>
+    <div class="container-fluid">
         <div class="row">
             <nav class="col-md-2 col-sm-12  sidebar" style="background-color:#FFC47E ; color: #3498db">
                 <div class="sidebar-sticky" >
+                    <!-- Logo Row -->
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col text-center">
+                            <img src="/images/bakery_icon.jpg" alt="Crazy Whisk Logo" style="max-height: 80px; margin-bottom: 10px;">
+                        </div>
+                 </div>
                     <!-- Move the upper navbar content here -->
-                    <h5 class="navbar-brand" style="color: #6B240C; font-size: 32px; font-weight: bold; text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8)">Crazy Whisk<br> Inventory</h5>
+                    <h5 class="navbar-brand" style="color: #6B240C; font-size: 32px; font-weight: bold; text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8)">
+                    Crazy Whisk<br> Inventory</h5>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
