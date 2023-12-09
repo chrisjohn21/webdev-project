@@ -15,8 +15,8 @@ include_once "./user.php";
     <link rel="icon" href="/images/bakery_icon.jpg" type="image/x-icon">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -24,6 +24,7 @@ include_once "./user.php";
     <script src="./quantityUpdate.js"></script>
     <script src="./deleteProduct.js"></script>
     <script src="./addUser.js"></script>
+    <script src="./searchFunctionality.js"></script>
     <link rel="stylesheet" href="./addProduct.css">
     <style>
         body {
@@ -110,6 +111,8 @@ include_once "./user.php";
             <main role="main" class="col-md-4 col-sm-12 ml-sm-auto col-lg-10 px-md-2 main-content">
                 <h2 id="product-table" class="custom-bg-gradient p-3" >Product List</h2><br>
                                 <button id="addProductButton" class="btn custom-bg-gradient mb-3" style="font-weight: bold; font-size:20px;">Add Product</button>
+                                <input type="text" id="searchInput" placeholder="Enter search term">
+                                <button id="searchButton" class="btn custom-bg-gradient mb-3 ml-3" style="font-weight: bold; font-size:20px;">Search</button>
                                 <div class="table-responsive" style="max-height: 450px; min-height: 430px; overflow-y: auto;">
                                 <table class="table table-striped table-bordered" style="font-size: 16px;">
                                 <thead class="custom-bg-gradient p-3">
@@ -135,7 +138,7 @@ include_once "./user.php";
                                         echo '<td>
                                                 <button class="btn btn-sm btn-success" onclick="updateQuantity(' . $product->getId() . ', \'in\')">In</button>
                                                 <button class="btn btn-sm btn-danger" onclick="updateQuantity(' . $product->getId() . ', \'out\')">Out</button>
-                                                <button class="btn btn-sm btn-warning" onclick="confirmDelete(' . $product->getId() . ', \'' . $product->getName() . '\')">Delete</button>
+                                                <button class="btn btn-sm btn-warning" onclick="deleteProduct(' . $product->getId() . ', \'' . $product->getName() . '\')">Delete</button>
                                             </td>';
                                         echo '</tr>';
                                     }

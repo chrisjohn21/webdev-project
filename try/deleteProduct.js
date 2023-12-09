@@ -1,44 +1,44 @@
-function confirmDelete(productId, productName) {
+function deleteProduct(productId, productName) {
+    // Use SweetAlert to confirm deletion
     Swal.fire({
         title: 'Are you sure?',
-        text: 'You are about to delete ' + productName + '. This action cannot be undone.',
+        text: `You are about to delete ${productName}. This action cannot be undone!`,
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
         confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
         if (result.isConfirmed) {
-            // Perform the delete operation
-            deleteProduct(productName);
-        }
-    });
-}
+            // AJAX request for product deletion
+            jQuery.ajax({
+                type: 'POST',
+                url: './deleteProduct.php', // Replace with the actual server-side file handling product deletion
+                data: { productId: productId },
+                dataType: 'json',
+                success: function (response) {
+                    // Log the response to the console for debugging
+                    console.log(response);
 
-function deleteProduct(productId, productName) {
-    $.ajax({
-        type: 'POST',
-        url: 'deleteProduct.php',
-        data: { product_id: productId },
-        dataType: 'json',
-        success: function (response) {
-            if (response.success) {
-                // Reload the page or update the product list
-                location.reload(true);
-            } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: response.message
-                });
-            }
-        },
-        error: function (xhr, status, error) {
-            console.error(xhr.responseText);
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Failed to communicate with the server'
+                    // Check the status returned from the server
+                    if (response.status === 'success') {
+                        // If successful, remove the table row
+                        $(`#product-${productId}`).remove();
+
+                        // Notify with SweetAlert
+                        Swal.fire('Deleted!', response.message, 'success');
+                    } else {
+                        // If an error occurred, notify with SweetAlert
+                        Swal.fire('Error!', response.message, 'error');
+                    }
+                },
+                error: function (xhr, status, error) {
+                    // Log the AJAX error details to the console for debugging
+                    console.error(xhr, status, error);
+
+                    // If an AJAX error occurred, notify with SweetAlert
+                    Swal.fire('Error!', 'An error occurred during the deletion process', 'error');
+                }
             });
         }
     });

@@ -41,6 +41,10 @@ class Product
     {
         return $this->quantity;
     }
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
 
     public static function getAllProducts()
     {
@@ -83,23 +87,49 @@ class Product
 
         return null; // Return null if the product is not found
     }
-    public function delete()
-    {
-        $database = new Database(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-        $conn = $database->getConnection();
+    public function deleteProduct()
+{
+    $database = new Database(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+    $conn = $database->getConnection();
 
+    try {
+        // Check if the product has a valid ID
+        if (!$this->id) {
+            throw new Exception("Invalid product ID");
+        }
+
+        // Prepare the delete query
         $query = "DELETE FROM products WHERE id = ?";
         $stmt = $conn->prepare($query);
+
+        if (!$stmt) {
+            throw new Exception("Prepare statement failed: " . $conn->error);
+        }
+
+        // Bind parameters
         $stmt->bind_param("i", $this->id);
 
-        if ($stmt->execute()) {
-            // Deletion successful
-            return true;
-        } else {
-            // Deletion failed
-            return false;
+        // Execute the statement
+        if (!$stmt->execute()) {
+            throw new Exception("Execute statement failed: " . $stmt->error);
         }
+
+        // Deletion successful
+        return true;
+    } catch (Exception $e) {
+        // Log the error (you can customize this based on your logging system)
+        error_log("Error deleting product: " . $e->getMessage());
+
+        // Deletion failed
+        return false;
+    } finally {
+        // Close the statement and connection
+        if (isset($stmt)) {
+            $stmt->close();
+        }
+        $conn->close();
     }
+}
 
 }
 ?>

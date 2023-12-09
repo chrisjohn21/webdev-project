@@ -44,7 +44,10 @@ $conn->close();
 <body>
 
 <div class="container">
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+    <form id="loginForm" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+        <div id="logo-container">
+            <img src="/images/bakery_icon.jpg" alt="Crazy Whisk Logo" id="login-logo">
+        </div>
         <h2>Login</h2>
 
         <?php
@@ -65,5 +68,3 @@ $conn->close();
 
 </body>
 </html>
-
-

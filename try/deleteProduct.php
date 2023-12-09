@@ -1,31 +1,28 @@
 <?php
-include_once "./connection.php"; // Include your database connection
+include_once "./connection.php";
+include_once "./Product.php";
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['id'])) {
-        $productId = $_POST['id'];
+// Check if the product ID is provided
+if (isset($_POST['productId'])) {
+    $productId = $_POST['productId'];
 
-        // Perform the deletion in the database
-        $sql = "DELETE FROM products WHERE id = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("i", $productId);
+    // Instantiate a Product object and set its ID
+    $product = new Product("", 0, "", 0);
+    $product->setId($productId);
 
-        $response = array('success' => false, 'message' => 'Failed to delete product.');
+    // Perform the delete operation
+    $result = $product->deleteProduct();
 
-        if ($stmt->execute()) {
-            $response = array('success' => true, 'message' => 'Product deleted successfully.');
-        }
-
-        $stmt->close();
-        echo json_encode($response);
-        exit;
+    // Check if the delete operation was successful
+    if ($result) {
+        // Provide a success message (you can customize this)
+        echo json_encode(['status' => 'success', 'message' => 'Product deleted successfully']);
     } else {
-        $response = array('success' => false, 'message' => 'Product ID not provided.');
-        echo json_encode($response);
-        exit;
+        // Provide an error message (you can customize this)
+        echo json_encode(['status' => 'error', 'message' => 'Error deleting product']);
     }
+} else {
+    // Handle the case when product ID is not provided
+    echo json_encode(['status' => 'error', 'message' => 'Product ID not provided']);
 }
-
-$response = array('success' => false, 'message' => 'Invalid request.');
-echo json_encode($response);
 ?>
